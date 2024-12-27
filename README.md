@@ -5,3 +5,18 @@
 
 # 实现效果
 
+1、主界面
+![图片](https://github.com/user-attachments/assets/d2f71fc1-c271-4dbc-97cc-0439a6e4ba41)
+
+2、解析界面
+![图片](https://github.com/user-attachments/assets/7ea7c53d-0189-4642-ae9d-1ebca193e485)
+
+3、解析完成界面
+![图片](https://github.com/user-attachments/assets/94c43cd5-c3d7-4d36-961b-a6db2bc615ce)
+
+
+# 运行方式
+以docker方式运行
+```bash
+./docker_run.sh
+```
