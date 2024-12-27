@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name=referrer content=no-referrer>
+<title>XHS Download</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #f7f7f7;
+  }
+  .container {
+    width: 90%;
+    max-width: 600px;
+  }
+  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  .media-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  .download-button {
+    margin-top: 5px;
+    display: block;
+    margin-bottom: 10px;
+  }
+  .media-item {
+    margin-bottom: 10px;
+  }
+  .video, .image {
+    width: 100%; /* 宽度为父容器的 100% */
+    height: auto; /* 高度自动调整以保持宽高比 */
+  }
+  /* 模态框样式 */
+.modal {
+  display: none; /* 默认隐藏 */
+  position: fixed; /* 固定定位 */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* 半透明背景 */
+  z-index: 1; /* 确保模态框在顶层 */
+}
+
+/* 模态框内容样式 */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 居中显示 */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* 宽度 */
+}
+
+/* 关闭按钮样式 */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <input type="text" id="inputField" placeholder="输入分享的链接...">
+  <button onclick="pasteText()">粘贴链接</button>
+<p></p>
+  <button onclick="parseData()">开始解析</button>
+  <div id="mediaContainer" class="media-container"></div>
+  <div class="media-item-container">
+	  <!-- 模态框 -->
+	<div id="loadingModal" class="modal" style="display: none;">
+  		<div class="modal-content">
+    		<span class="close" onclick="hideModal()">&times;</span>
+    		<p>正在快马加鞭解析中，请稍等...</p>
+  		</div>
+	</div>
