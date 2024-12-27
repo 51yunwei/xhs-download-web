@@ -1,0 +1,88 @@
+  </div>
+</div>
+<script>
+// 显示模态框
+function showModal() {
+  document.getElementById('loadingModal').style.display = 'block';
+}
+
+// 隐藏模态框
+function hideModal() {
+  document.getElementById('loadingModal').style.display = 'none';
+}
+function pasteText() {
+    navigator.clipboard.readText().then(text => {
+      document.getElementById('inputField').value = text;
+    });
+  }
+  function parseData() {
+    const origin   = window.location.origin;
+    
+    const inputText = document.getElementById('inputField').value;
+    const data = {
+        "url": inputText,
+    }
+    showModal(); // 显示模态框
+    fetch(origin, {
+      method: 'POST',
+      mode: 'no-cors', // 禁用CORS检查
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    .then(response => response.text())
+    .then(html => {
+        // 隐藏模态框
+        hideModal();
+        // 使用返回的HTML内容替换当前页面的内容
+        document.body.innerHTML = html;
+    })
+  }
+  function downloadFile(url, fileName) {
+  // 使用 AJAX 请求获取文件内容
+  fetch(url)
+    .then(response => {
+      // 检查响应状态
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      // 将响应转换为 Blob
+      return response.blob();
+    })
+    .then(blob => {
+      // 获取 Blob URL
+      const blobUrl = URL.createObjectURL(blob);
+
+      // 创建下载链接
+      const downloadLink = document.createElement('a');
+      downloadLink.href = blobUrl;
+      downloadLink.download = fileName;
+      downloadLink.style.display = 'none';
+      document.body.appendChild(downloadLink);
+
+      // 触发下载
+      downloadLink.click();
+
+      // 清理：释放 Blob URL
+      document.body.removeChild(downloadLink);
+      URL.revokeObjectURL(blobUrl);
+    })
+    .catch(error => {
+      console.error('There has been a problem with your fetch operation:', error);
+    });
+}
+	function copyToClipboard(aid) {
+  console.log(aid)
+  text=document.getElementById(aid).text;
+  console.log(text)
+  // 使用 navigator.clipboard.writeText() 方法将文本写入剪贴板
+  navigator.clipboard.writeText(text).then(() => {
+    console.log('内容已复制到剪贴板');
+  }).catch(err => {
+    console.error('无法复制内容:', err);
+  });
+}
+</script>
+</body>
+</html>
