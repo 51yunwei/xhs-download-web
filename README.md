@@ -25,3 +25,5 @@
 ./docker_run.sh
 ```
 
+2、使用浏览器打开https://url:8888
+![图片](https://github.com/user-attachments/assets/d2f71fc1-c271-4dbc-97cc-0439a6e4ba41)
