@@ -10,7 +10,7 @@ import ssl
 import re
 
 # 定义小红书服务器的URL，请根据实际情况修改。
-xhs_server = "http://127.0.0.1/xhs/"
+xhs_server = "http://127.0.0.1:8000/xhs/"
 
 # 编译一个正则表达式模式，用于匹配URL
 regular = re.compile("http[s]?://[a-zA-Z0-9./?=&_]+")
