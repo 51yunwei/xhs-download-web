@@ -93,7 +93,7 @@ class Resquest(BaseHTTPRequestHandler):
                     <a id="desc_content" style="display: none;">{desc_content}</a>
                     <div style="display: flex; flex-direction: column; align-items: center; flex-basis: 100%;">
                       <button onclick="copyToClipboard('user_name')">点击复制作者名称</button>
-                      <p></p>
+                      </br>
                       <button onclick="copyToClipboard('desc_content')">点击复制作品文案</button>
                     </div>
                     """
